@@ -6,13 +6,15 @@ import Base from './components/Layout/Base';
 // import BasePage from './components/Layout/BasePage';
 
 import DashboardV1 from './components/Dashboard/DashboardV1';
+import Create from './components/Dashboard/Create';
+
 
 
 const Routes = ({ location }) => {
     const currentKey = location.pathname.split('/')[1] || '/';
     const timeout = { enter: 500, exit: 500 };
 
-    const animationName = 'rag-fadeIn'
+    const animationName = 'rag-fadeIn';
 
         return (
             // Layout component wrapper
@@ -25,7 +27,7 @@ const Routes = ({ location }) => {
 
                             {/*Dashboard*/}
                             <Route path="/dashboard" component={DashboardV1}/>
-
+                            <Route name="edit" path="/edit/:id" component={Create}/>
 
                             <Redirect to="/dashboard"/>
                         </Switch>
@@ -35,6 +37,6 @@ const Routes = ({ location }) => {
             </Base>
         )
 
-}
+};
 
 export default withRouter(Routes);

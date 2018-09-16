@@ -9,7 +9,7 @@ const SidebarItemHeader = ({item}) => (
     <li className="nav-heading">
         <span>{item.heading}</span>
     </li>
-)
+);
 
 /** Normal items for the sidebar */
 const SidebarItem = ({item, isActive}) => (
@@ -20,7 +20,7 @@ const SidebarItem = ({item, isActive}) => (
             <span>{item.name}</span>
         </Link>
     </li>
-)
+);
 
 /** Build a sub menu with items inside and attach collapse behavior */
 const SidebarSubItem = ({item, isActive, handler, children, isOpen}) => (
@@ -36,12 +36,12 @@ const SidebarSubItem = ({item, isActive, handler, children, isOpen}) => (
             </ul>
         </Collapse>
     </li>
-)
+);
 
 /** Component used to display a header on menu when using collapsed/hover mode */
 const SidebarSubHeader = ({item}) => (
     <li className="sidebar-subnav-header">{item.name}</li>
-)
+);
 
 class Sidebar extends Component {
 
@@ -63,7 +63,7 @@ class Sidebar extends Component {
                 collapse[name] = this.routeActive(submenu ? submenu.map(({path})=>path) : path)
             })
         this.setState({collapse});
-    }
+    };
 
     navigator(route) {
         this.props.history.push(route);
@@ -99,7 +99,7 @@ class Sidebar extends Component {
         if (item.heading) return 'heading';
         if (!item.submenu) return 'menu';
         if (item.submenu) return 'submenu';
-    }
+    };
 
     render() {
         return (
@@ -116,12 +116,12 @@ class Sidebar extends Component {
                                     if(this.itemType(item) === 'heading')
                                         return (
                                             <SidebarItemHeader item={item} key={i} />
-                                        )
+                                        );
                                     else {
                                         if(this.itemType(item) === 'menu')
                                             return (
                                                 <SidebarItem isActive={this.routeActive(item.path)} item={item} key={i} />
-                                            )
+                                            );
                                         if(this.itemType(item) === 'submenu')
                                             return [
                                                 <SidebarSubItem item={item} isOpen={this.state.collapse[item.name]} handler={ this.toggleItemCollapse.bind(this, item.name) } isActive={this.routeActive(this.getSubRoutes(item))} key={i}>
