@@ -23,14 +23,30 @@ class DashboardV1 extends Component {
 
     getItems(){
         axios.get('http://127.0.0.1:8000/album/')
-            .then(response=>{
+             .then(response=>{
                 this.setState({'items': response.data})
-            });
+             });
     }
 
     handleClickFunc(){
       console.log('eeeeeeeeeeeeeeeeeee');
       alert('ssssssssssssss');
+    }
+
+    onEdit(item_id){
+
+      axios.get('http://127.0.0.1:8000/album/'+item_id+'/')
+           .then(response=>{
+             this.setState({'item': response.data})
+           });
+    }
+
+    onDelete(item_id){
+
+      axios.delete('http://127.0.0.1:8000/album/'+item_id+'/')
+           .then(response=>{
+             this.getItems();
+           });
     }
 
     render() {
@@ -64,7 +80,10 @@ class DashboardV1 extends Component {
                                                   <td>{item.id}</td>
                                                   <td>{item.album_name}</td>
                                                   <td>{item.artist}</td>
-                                                  <td><a href="#" onClick={this.handleClickFunc.bind(this)}>Editar</a></td>
+                                                  <td>
+                                                    <a href="#" onClick={this.onEdit.bind(this, item.id)}>Edit</a>
+                                                    <a href="#" onClick={this.onDelete.bind(this, item.id)}>Delete</a>
+                                                  </td>
                                               </tr>
 
                                             )
