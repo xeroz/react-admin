@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ContentWrapper from '../Layout/ContentWrapper';
+import { Link } from "react-router-dom";
 import {
     Card,
     CardBody,
@@ -67,9 +68,9 @@ class DashboardV1 extends Component {
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
+                                        <th>Name</th>
+                                        <th>Artist</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -81,7 +82,7 @@ class DashboardV1 extends Component {
                                                   <td>{item.album_name}</td>
                                                   <td>{item.artist}</td>
                                                   <td>
-                                                    <a href="#" onClick={this.onEdit.bind(this, item.id)}>Edit</a>
+                                                    <Link to={`${item.id}`}>Edit</Link>
                                                     <a href="#" onClick={this.onDelete.bind(this, item.id)}>Delete</a>
                                                   </td>
                                               </tr>

@@ -7,7 +7,7 @@ import Base from './components/Layout/Base';
 
 import DashboardV1 from './components/Dashboard/DashboardV1';
 import Create from './components/Dashboard/Create';
-
+import Edit from './components/Dashboard/Edit';
 
 
 const Routes = ({ location }) => {
@@ -27,7 +27,8 @@ const Routes = ({ location }) => {
 
                             {/*Dashboard*/}
                             <Route path="/dashboard" component={DashboardV1}/>
-                            <Route name="edit" path="/edit/:id" component={Create}/>
+                            <Route name="create" path="/album/create" component={Create}/>
+                            <Route name="edit" path="/album/:id" component={Edit}/>
 
                             <Redirect to="/dashboard"/>
                         </Switch>
